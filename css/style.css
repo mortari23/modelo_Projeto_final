@@ -1,0 +1,647 @@
+/* Importa a fonte Roboto do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+/* Define variáveis CSS globais */
+:root{
+    --main-color:#d3ad7f;          /* Cor principal (dourado/bege) */
+    --black:#13131a;               /* Preto personalizado */
+    --bg:#010103;                  /* Cor de fundo escura */
+    --border:.1rem solid rgba(255,255,255,.3); /* Borda translúcida */
+}
+
+/* Estilos globais para todos os elementos */
+*{
+    font-family: 'Roboto', sans-serif; /* Define a fonte padrão */
+    margin:0; padding:0;             /* Remove margens e paddings */
+    box-sizing: border-box;          /* Modelo de caixa border-box */
+    outline: none; border:none;      /* Remove contornos e bordas */
+    text-decoration: none;           /* Remove sublinhado de links */
+    text-transform: capitalize;      /* Texto em maiúsculas */
+    transition: .2s linear;          /* Transição suave para animações */
+}
+
+/* Estilos base do HTML */
+html{
+    font-size: 62.5%;                /* 1rem = 10px (facilita cálculos) */
+    overflow-x: hidden;              /* Esconde overflow horizontal */
+    scroll-padding-top: 9rem;        /* Espaço para scroll fixo */
+    scroll-behavior: smooth;         /* Scroll suave */
+}
+
+/* Personaliza a barra de scroll */
+html::-webkit-scrollbar{
+    width: .8rem;                   /* Largura da barra de scroll */
+}
+
+html::-webkit-scrollbar-track{
+    background: transparent;        /* Fundo transparente da trilha */
+}
+
+html::-webkit-scrollbar-thumb{
+    background: #fff;               /* Cor do "puxador" do scroll */
+    border-radius: 5rem;            /* Borda arredondada */
+}
+
+/* Estilos do corpo do documento */
+body{
+    background: var(--bg);          /* Aplica cor de fundo definida */
+}
+
+/* Estilo padrão para sections */
+section{
+    padding:2rem 7%;               /* Padding interno responsivo */
+}
+
+/* Estilo para títulos principais */
+.heading{
+    text-align: center;            /* Centraliza texto */
+    color:#fff;                     /* Cor branca */
+    text-transform: uppercase;      /* Texto em maiúsculas */
+    padding-bottom: 3.5rem;         /* Espaço abaixo */
+    font-size: 4rem;                /* Tamanho grande de fonte */
+}
+
+.heading span{
+    color:var(--main-color);        /* Destaque com cor principal */
+    text-transform: uppercase;      /* Mantém maiúsculas */
+}
+
+/* Estilos para botões */
+.btn{
+    margin-top: 1rem;               /* Espaço acima */
+    display: inline-block;          /* Exibição inline-block */
+    padding:.9rem 3rem;             /* Padding interno */
+    font-size: 1.7rem;              /* Tamanho da fonte */
+    color:#fff;                     /* Texto branco */
+    background: var(--main-color);  /* Fundo com cor principal */
+    cursor: pointer;                /* Cursor de pointer */
+}
+
+.btn:hover{
+    letter-spacing: .2rem;          /* Efeito hover espaçando letras */
+}
+
+/* Estilos do cabeçalho fixo */
+.header{
+    background: var(--bg);          /* Cor de fundo escura */
+    display: flex;                  /* Layout flexível */
+    align-items: center;            /* Centraliza verticalmente */
+    justify-content: space-between; /* Espaço entre elementos */
+    padding:1.5rem 7%;             /* Padding interno */
+    border-bottom: var(--border);   /* Borda inferior */
+    position: fixed;                /* Fixo no topo */
+    top:0; left: 0; right: 0;       /* Cobre toda a largura */
+    z-index: 1000;                  /* Garante sobreposição */
+}
+
+.header .logo img{
+    height: 6rem;                   /* Altura fixa para logo */
+}
+
+/* Estilos da navegação */
+.header .navbar a{
+    margin:0 1rem;                 /* Espaçamento entre links */
+    font-size: 1.6rem;             /* Tamanho da fonte */
+    color:#fff;                    /* Cor branca */
+}
+
+.header .navbar a:hover{
+    color:var(--main-color);       /* Cor principal no hover */
+    border-bottom: .1rem solid var(--main-color); /* Borda inferior */
+    padding-bottom: .5rem;         /* Ajuste de posição */
+}
+
+/* Estilos dos ícones do cabeçalho */
+.header .icons div{
+    color:#fff;                    /* Cor branca */
+    cursor: pointer;               /* Cursor pointer */
+    font-size: 2.5rem;            /* Tamanho grande */
+    margin-left: 2rem;            /* Espaçamento entre ícones */
+}
+
+.header .icons div:hover{
+    color:var(--main-color);      /* Cor principal no hover */
+}
+
+/* Esconde botão de menu (mobile) */
+#menu-btn{
+    display: none;                /* Oculto por padrão */
+}
+
+/* Formulário de pesquisa estilo dropdown */
+.header .search-form{
+    position: absolute;           /* Posicionamento absoluto */
+    top:115%; right: 7%;          /* Posição abaixo do cabeçalho */
+    background: #fff;             /* Fundo branco */
+    width: 50rem;                 /* Largura fixa */
+    height: 5rem;                /* Altura fixa */
+    display: flex;                /* Layout flex */
+    align-items: center;          /* Centraliza verticalmente */
+    transform: scaleY(0);         /* Escondido inicialmente */
+    transform-origin: top;        /* Animação a partir do topo */
+}
+
+.header .search-form.active{
+    transform: scaleY(1);         /* Mostra o formulário */
+}
+
+.header .search-form input{
+    height: 100%;                /* Altura total */
+    width: 100%;                 /* Largura total */
+    font-size: 1.6rem;           /* Tamanho da fonte */
+    color:var(--black);          /* Cor do texto preto */
+    padding:1rem;               /* Padding interno */
+    text-transform: none;        /* Sem transformação de texto */
+}
+
+.header .search-form label{
+    cursor: pointer;             /* Ícone clicável */
+    font-size: 2.2rem;          /* Tamanho do ícone */
+    margin-right: 1.5rem;       /* Espaçamento à direita */
+    color:var(--black);         /* Cor preta */
+}
+
+.header .search-form label:hover{
+    color:var(--main-color);    /* Cor principal no hover */
+}
+
+/* Carrinho de compras estilo sidebar */
+.header .cart-items-container{
+    position: absolute;          /* Posicionamento absoluto */
+    top:100%; right: -100%;      /* Inicialmente fora da tela */
+    height: calc(100vh - 9.5rem); /* Altura calculada */
+    width: 35rem;               /* Largura fixa */
+    background: #fff;            /* Fundo branco */
+    padding:0 1.5rem;           /* Padding interno */
+}
+
+.header .cart-items-container.active{
+    right: 0;                   /* Mostra o carrinho */
+}
+
+/* Itens do carrinho */
+.header .cart-items-container .cart-item{
+    position: relative;          /* Posicionamento relativo */
+    margin:2rem 0;              /* Margem vertical */
+    display: flex;              /* Layout flex */
+    align-items: center;        /* Alinhamento vertical */
+    gap:1.5rem;                /* Espaço entre elementos */
+}
+
+.header .cart-items-container .cart-item .fa-times{
+    position: absolute;         /* Posição absoluta */
+    top:1rem; right: 1rem;     /* Canto superior direito */
+    font-size: 2rem;           /* Tamanho do ícone */
+    cursor: pointer;           /* Cursor pointer */
+    color: var(--black);       /* Cor preta */
+}
+
+.header .cart-items-container .cart-item .fa-times:hover{
+    color:var(--main-color);   /* Cor principal no hover */
+}
+
+.header .cart-items-container .cart-item img{
+    height: 7rem;              /* Altura fixa para imagens */
+}
+
+/* Conteúdo dos itens do carrinho */
+.header .cart-items-container .cart-item .content h3{
+    font-size: 2rem;           /* Tamanho do título */
+    color:var(--black);        /* Cor preta */
+    padding-bottom: .5rem;    /* Espaço abaixo */
+}
+
+.header .cart-items-container .cart-item .content .price{
+    font-size: 1.5rem;        /* Tamanho do preço */
+    color:var(--main-color);  /* Cor principal */
+}
+
+/* Botão no carrinho */
+.header .cart-items-container .btn{
+    width: 100%;              /* Largura total */
+    text-align: center;        /* Texto centralizado */
+}
+
+/* Seção home com imagem de fundo */
+.home{
+    min-height: 100vh;         /* Altura mínima da viewport */
+    display: flex;             /* Layout flex */
+    align-items: center;       /* Centraliza verticalmente */
+    background:url(../images/home-img.jpeg) no-repeat; /* Imagem de fundo */
+    background-size: cover;    /* Cobre todo o espaço */
+    background-position: center; /* Centraliza imagem */
+}
+
+/* Conteúdo da seção home */
+.home .content{
+    max-width: 60rem;         /* Largura máxima */
+}
+
+.home .content h3{
+    font-size: 6rem;          /* Título gigante */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    color:#fff;               /* Cor branca */
+}
+
+.home .content p{
+    font-size: 2rem;          /* Tamanho de texto */
+    font-weight: lighter;     /* Peso fino */
+    line-height: 1.8;         /* Altura de linha */
+    padding:1rem 0;          /* Espaçamento vertical */
+    color:#eee;              /* Cor cinza claro */
+}
+
+/* Seção about com layout flexível */
+.about .row{
+    display: flex;            /* Layout flex */
+    align-items: center;      /* Alinhamento vertical */
+    background:var(--black);  /* Fundo preto */
+    flex-wrap: wrap;          /* Quebra de linha em mobile */
+}
+
+.about .row .image{
+    flex:1 1 45rem;          /* Flex item com base 45rem */
+}
+
+.about .row .image img{
+    width: 100%;             /* Imagem ocupa todo o espaço */
+}
+
+.about .row .content{
+    flex:1 1 45rem;         /* Flex item com base 45rem */
+    padding:2rem;           /* Padding interno */
+}
+
+.about .row .content h3{
+    font-size: 3rem;        /* Tamanho do título */
+    color:#fff;             /* Cor branca */
+}
+
+.about .row .content p{
+    font-size: 1.6rem;     /* Tamanho do texto */
+    color:#ccc;            /* Cor cinza */
+    padding:1rem 0;       /* Espaçamento vertical */
+    line-height: 1.8;     /* Altura de linha */
+}
+
+/* Grid de produtos do menu */
+.menu .box-container{
+    display: grid;                            /* Layout grid */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Colunas responsivas */
+    gap:1.5rem;                              /* Espaço entre itens */
+}
+
+.menu .box-container .box{
+    padding:5rem;         /* Padding interno grande */
+    text-align: center;   /* Texto centralizado */
+    border:var(--border); /* Borda definida */
+}
+
+.menu .box-container .box img{
+    height: 10rem;       /* Altura fixa para imagens */
+}
+
+.menu .box-container .box h3{
+    color: #fff;         /* Texto branco */
+    font-size: 2rem;     /* Tamanho do título */
+    padding:1rem 0;     /* Espaçamento vertical */
+}
+
+.menu .box-container .box .price{
+    color: #fff;        /* Texto branco */
+    font-size: 2.5rem; /* Tamanho grande */
+    padding:.5rem 0;   /* Espaçamento vertical */
+}
+
+.menu .box-container .box .price span{
+    font-size: 1.5rem;             /* Tamanho menor */
+    text-decoration: line-through; /* Texto tachado */
+    font-weight: lighter;          /* Peso fino */
+}
+
+/* Efeito hover nos itens do menu */
+.menu .box-container .box:hover{
+    background:#fff;              /* Fundo branco */
+}
+
+.menu .box-container .box:hover > *{
+    color:var(--black);           /* Texto preto no hover */
+}
+
+/* Seção de produtos */
+.products .box-container{
+    display: grid;                            /* Layout grid */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Colunas responsivas */
+    gap:1.5rem;                              /* Espaço entre itens */
+}
+
+.products .box-container .box{
+    text-align: center;   /* Texto centralizado */
+    border:var(--border); /* Borda definida */
+    padding: 2rem;       /* Padding interno */
+}
+
+/* Ícones de produtos */
+.products .box-container .box .icons a{
+    height: 5rem;        /* Altura fixa */
+    width: 5rem;         /* Largura fixa */
+    line-height: 5rem;   /* Centraliza verticalmente */
+    font-size: 2rem;     /* Tamanho do ícone */
+    border:var(--border); /* Borda definida */
+    color:#fff;          /* Cor branca */
+    margin:.3rem;       /* Margem pequena */
+}
+
+.products .box-container .box .icons a:hover{
+    background:var(--main-color); /* Fundo cor principal no hover */
+}
+/* ----------------------------------------------------------------------------------------------- */
+
+/* Estilização da seção de produtos */
+.products .box-container .box .image{
+    padding: 2.5rem 0; /* Espaçamento vertical para a área da imagem */
+}
+
+.products .box-container .box .image img{
+    height: 25rem; /* Altura fixa para imagens dos produtos */
+}
+
+.products .box-container .box .content h3{
+    color:#fff; /* Cor do título do produto */
+    font-size: 2.5rem; /* Tamanho da fonte do título */
+}
+
+.products .box-container .box .content .stars{
+    padding: 1.5rem; /* Espaçamento ao redor das estrelas de avaliação */
+}
+
+.products .box-container .box .content .stars i{
+    font-size: 1.7rem; /* Tamanho dos ícones de estrela */
+    color: var(--main-color); /* Cor principal para as estrelas */
+}
+
+.products .box-container .box .content .price{
+    color:#fff; /* Cor do preço */
+    font-size: 2.5rem; /* Tamanho da fonte do preço */
+}
+
+.products .box-container .box .content .price span{
+    text-decoration: line-through; /* Preço original riscado */
+    font-weight: lighter; /* Peso da fonte mais fino */
+    font-size: 1.5rem; /* Tamanho menor para o preço original */
+}
+
+/* Seção de avaliações de clientes */
+.review .box-container{
+    display: grid; /* Layout em grid */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Colunas responsivas */
+    gap:1.5rem; /* Espaço entre os cards de avaliação */
+}
+
+.review .box-container .box{
+    border:var(--border); /* Borda usando variável CSS */
+    text-align: center; /* Alinhamento centralizado */
+    padding:3rem 2rem; /* Espaçamento interno */
+}
+
+.review .box-container .box p{
+    font-size: 1.5rem; /* Tamanho do texto da avaliação */
+    line-height: 1.8; /* Altura da linha */
+    color:#ccc; /* Cor do texto */
+    padding:2rem 0; /* Espaçamento vertical */
+}
+
+.review .box-container .box .user{
+    height: 7rem; /* Tamanho fixo para foto do usuário */
+    width: 7rem; /* Largura igual à altura para formar círculo */
+    border-radius: 50%; /* Transforma em círculo */
+    object-fit: cover; /* Garante que a imagem cubra o espaço */
+}
+
+.review .box-container .box h3{
+    padding:1rem 0; /* Espaçamento vertical */
+    font-size: 2rem; /* Tamanho do nome do usuário */
+    color:#fff; /* Cor do texto */
+}
+
+.review .box-container .box .stars i{
+    font-size: 1.5rem; /* Tamanho das estrelas */
+    color:var(--main-color); /* Cor principal para estrelas */
+}
+
+/* Seção de contato */
+.contact .row{
+    display: flex; /* Layout flexível */
+    background:var(--black); /* Fundo preto */
+    flex-wrap: wrap; /* Quebra de linha em telas pequenas */
+    gap:1rem; /* Espaço entre elementos */
+}
+
+.contact .row .map{
+    flex:1 1 45rem; /* Flex item com tamanho base */
+    width: 100%; /* Largura total */
+    object-fit: cover; /* Cobrir área do container */
+}
+
+.contact .row form{
+    flex:1 1 45rem; /* Flex item com tamanho base */
+    padding:5rem 2rem; /* Espaçamento interno */
+    text-align: center; /* Alinhamento centralizado */
+}
+
+.contact .row form h3{
+    text-transform: uppercase; /* Texto em maiúsculas */
+    font-size: 3.5rem; /* Tamanho do título */
+    color:#fff; /* Cor do texto */
+}
+
+.contact .row form .inputBox{
+    display: flex; /* Layout flexível para inputs */
+    align-items: center; /* Alinhamento vertical */
+    margin-top: 2rem; /* Margem superior */
+    margin-bottom: 2rem; /* Margem inferior */
+    background:var(--bg); /* Cor de fundo */
+    border:var(--border); /* Borda usando variável */
+}
+
+.contact .row form .inputBox span{
+    color:#fff; /* Cor do ícone */
+    font-size: 2rem; /* Tamanho do ícone */
+    padding-left: 2rem; /* Espaçamento à esquerda */
+}
+
+.contact .row form .inputBox input{
+    width: 100%; /* Largura total */
+    padding:2rem; /* Espaçamento interno */
+    font-size: 1.7rem; /* Tamanho da fonte */
+    color:#fff; /* Cor do texto */
+    text-transform: none; /* Sem transformação de texto */
+    background:none; /* Fundo transparente */
+}
+
+/* Seção de blogs */
+.blogs .box-container{
+    display: grid; /* Layout em grid */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Colunas responsivas */
+    gap:1.5rem; /* Espaço entre posts */
+}
+
+.blogs .box-container .box{
+    border:var(--border); /* Borda usando variável */
+}
+
+.blogs .box-container .box .image{
+    height: 25rem; /* Altura fixa para imagem */
+    overflow:hidden; /* Esconde overflow */
+    width: 100%; /* Largura total */
+}
+
+.blogs .box-container .box .image img{
+    height: 100%; /* Altura total do container */
+    object-fit: cover; /* Cobrir área do container */
+    width: 100%; /* Largura total */
+}
+
+.blogs .box-container .box:hover .image img{
+    transform: scale(1.2); /* Efeito zoom no hover */
+}
+
+.blogs .box-container .box .content{
+    padding:2rem; /* Espaçamento interno */
+}
+
+.blogs .box-container .box .content .title{
+    font-size: 2.5rem; /* Tamanho do título */
+    line-height: 1.5; /* Altura da linha */
+    color:#fff; /* Cor do texto */
+}
+
+.blogs .box-container .box .content .title:hover{
+    color:var(--main-color); /* Cor principal no hover */
+}
+
+.blogs .box-container .box .content span{
+    color:var(--main-color); /* Cor da data/autor */
+    display: block; /* Exibição em bloco */
+    padding-top: 1rem; /* Espaçamento superior */
+    font-size: 2rem; /* Tamanho da fonte */
+}
+
+.blogs .box-container .box .content p{
+    font-size: 1.6rem; /* Tamanho do texto */
+    line-height: 1.8; /* Altura da linha */
+    color:#ccc; /* Cor do texto */
+    padding:1rem 0; /* Espaçamento vertical */
+}
+
+/* Rodapé */
+.footer{
+    background:var(--black); /* Fundo preto */
+    text-align: center; /* Alinhamento centralizado */
+}
+
+.footer .share{
+    padding:1rem 0; /* Espaçamento vertical */
+}
+
+.footer .share a{
+    height: 5rem; /* Tamanho dos ícones sociais */
+    width: 5rem; /* Largura igual à altura */
+    line-height: 5rem; /* Centralização vertical */
+    font-size: 2rem; /* Tamanho dos ícones */
+    color:#fff; /* Cor dos ícones */
+    border:var(--border); /* Borda usando variável */
+    margin:.3rem; /* Margem entre ícones */
+    border-radius: 50%; /* Formato circular */
+}
+
+.footer .share a:hover{
+    background-color: var(--main-color); /* Cor principal no hover */
+}
+
+.footer .links{
+    display: flex; /* Layout flexível */
+    justify-content: center; /* Centralização horizontal */
+    flex-wrap: wrap; /* Quebra de linha */
+    padding:2rem 0; /* Espaçamento vertical */
+    gap:1rem; /* Espaço entre links */
+}
+
+.footer .links a{
+    padding:.7rem 2rem; /* Espaçamento interno */
+    color:#fff; /* Cor do texto */
+    border:var(--border); /* Borda usando variável */
+    font-size: 2rem; /* Tamanho da fonte */
+}
+
+.footer .links a:hover{
+    background:var(--main-color); /* Cor principal no hover */
+}
+
+.footer .credit{
+    font-size: 2rem; /* Tamanho do texto */
+    color:#fff; /* Cor do texto */
+    font-weight: lighter; /* Peso da fonte */
+    padding:1.5rem; /* Espaçamento interno */
+}
+
+.footer .credit span{
+    color:var(--main-color); /* Destaque em cor principal */
+}
+
+/* Media Queries para responsividade */
+@media (max-width:991px){
+    html{
+        font-size: 55%; /* Redução do tamanho base */
+    }
+    .header{
+        padding:1.5rem 2rem; /* Ajuste de padding */
+    }
+    section{
+        padding:2rem; /* Ajuste de padding */
+    }
+}
+
+@media (max-width:768px){
+    #menu-btn{
+        display: inline-block; /* Exibe botão mobile */
+    }
+    .header .navbar{
+        position: absolute; /* Posicionamento absoluto */
+        top:100%; right: -100%; /* Esconde menu */
+        background: #fff; /* Fundo branco */
+        width: 30rem; /* Largura do menu mobile */
+        height: calc(100vh - 9.5rem); /* Altura calculada */
+    }
+    .header .navbar.active{
+        right:0; /* Exibe menu quando ativo */
+    }
+    .header .navbar a{
+        color:var(--black); /* Cor dos links */
+        display: block; /* Exibição em bloco */
+        margin:1.5rem; /* Margem entre links */
+        padding:.5rem; /* Espaçamento interno */
+        font-size: 2rem; /* Tamanho da fonte */
+    }
+    .header .search-form{
+        width: 90%; /* Largura ajustada */
+        right: 2rem; /* Posicionamento */
+    }
+    .home{
+        background-position: left; /* Ajuste de posição da imagem */
+        justify-content: center; /* Centralização */
+        text-align: center; /* Alinhamento de texto */
+    }
+    .home .content h3{
+        font-size: 4.5rem; /* Tamanho reduzido */
+    }
+    .home .content p{
+        font-size: 1.5rem; /* Tamanho reduzido */
+    }
+}
+
+@media (max-width:450px){
+    html{
+        font-size: 50%; /* Tamanho base menor */
+    }
+}

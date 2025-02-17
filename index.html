@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Completo de Site Responsivo para Cafeteria</title>
+
+    <!-- Link para o CSS do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Link para o arquivo CSS personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    
+<!-- Seção do Cabeçalho -->
+<header class="header">
+    <a href="#" class="logo">
+        <img src="images/logo.png" alt="Logo da Cafeteria">
+    </a>
+
+    <!-- Menu de Navegação -->
+    <nav class="navbar">
+        <a href="#home">início</a>
+        <a href="#about">sobre</a>
+        <a href="#menu">cardápio</a>
+        <a href="#products">produtos</a>
+        <a href="#review">avaliações</a>
+        <a href="#contact">contato</a>
+        <a href="#blogs">blogs</a>
+    </nav>
+
+    <!-- Ícones de Funcionalidades -->
+    <div class="icons">
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-bars" id="menu-btn"></div>
+    </div>
+
+    <!-- Formulário de Pesquisa -->
+    <div class="search-form">
+        <input type="search" id="search-box" placeholder="pesquisar aqui...">
+        <label for="search-box" class="fas fa-search"></label>
+    </div>
+
+    <!-- Carrinho de Compras -->
+    <div class="cart-items-container">
+        <div class="cart-item">
+            <span class="fas fa-times"></span>
+            <img src="images/cart-item-1.png" alt="Item do Carrinho">
+            <div class="content">
+                <h3>item do carrinho 01</h3>
+                <div class="price">R$15.99/-</div>
+            </div>
+        </div>
+        <!-- Itens repetidos do carrinho (similar aos acima) -->
+        <a href="#" class="btn">finalizar compra</a>
+    </div>
+</header>
+
+<!-- Seção Home - Banner Principal -->
+<section class="home" id="home">
+    <div class="content">
+        <h3>café fresco pela manhã</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat labore, sint cupiditate distinctio tempora reiciendis.</p>
+        <a href="#" class="btn">peça o seu agora</a>
+    </div>
+</section>
+
+<!-- Seção Sobre -->
+<section class="about" id="about">
+    <h1 class="heading"> <span>sobre</span> nós </h1>
+    <div class="row">
+        <div class="image">
+            <img src="images/about-img.jpeg" alt="Imagem Sobre">
+        </div>
+        <div class="content">
+            <h3>o que torna nosso café especial?</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus qui ea ullam, enim tempora ipsum fuga alias quae ratione a officiis id temporibus autem?</p>
+            <a href="#" class="btn">saiba mais</a>
+        </div>
+    </div>
+</section>
+
+<!-- Seção Cardápio -->
+<section class="menu" id="menu">
+    <h1 class="heading"> nosso <span>cardápio</span> </h1>
+    <div class="box-container">
+        <!-- Itens do Cardápio (6 exemplos) -->
+        <div class="box">
+            <img src="images/menu-1.png" alt="Item do Cardápio">
+            <h3>saboroso e saudável</h3>
+            <div class="price">R$15.99 <span>20.99</span></div>
+            <a href="#" class="btn">adicionar ao carrinho</a>
+        </div>
+        <!-- ... outros itens ... -->
+    </div>
+</section>
+
+<!-- Seção de Produtos -->
+<section class="products" id="products">
+    <h1 class="heading"> nossos <span>produtos</span> </h1>
+    <div class="box-container">
+        <!-- Cards de Produtos (3 exemplos) -->
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-shopping-cart"></a>
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-1.png" alt="Produto">
+            <h3>café fresco</h3>
+            <!-- Classificação por estrelas -->
+            <div class="price">R$15.99 <span>R$20.99</span></div>
+        </div>
+        <!-- ... outros produtos ... -->
+    </div>
+</section>
+
+<!-- Seção de Avaliações de Clientes -->
+<section class="review" id="review">
+    <h1 class="heading"> avaliações <span>dos clientes</span> </h1>
+    <div class="box-container">
+        <!-- Cards de Avaliação (3 exemplos) -->
+        <div class="box">
+            <img src="images/quote-img.png" alt="Aspas" class="quote">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <img src="images/pic-1.png" class="user" alt="Cliente">
+            <h3>joão silva</h3>
+            <!-- Classificação por estrelas -->
+        </div>
+        <!-- ... outras avaliações ... -->
+    </div>
+</section>
+
+<!-- Seção de Contato -->
+<section class="contact" id="contact">
+    <h1 class="heading"> <span>contate</span>-nos </h1>
+    <div class="row">
+        <iframe class="map" src="https://maps.google.com/maps?q..."></iframe>
+        <form action="">
+            <h3>fale conosco</h3>
+            <!-- Campos do formulário -->
+            <div class="inputBox">
+                <span class="fas fa-user"></span>
+                <input type="text" placeholder="nome">
+            </div>
+            <!-- ... outros campos ... -->
+            <input type="submit" value="enviar mensagem" class="btn">
+        </form>
+    </div>
+</section>
+
+<!-- Seção de Blogs -->
+<section class="blogs" id="blogs">
+    <h1 class="heading"> nossos <span>blogs</span> </h1>
+    <div class="box-container">
+        <!-- Posts do Blog (3 exemplos) -->
+        <div class="box">
+            <img src="images/blog-1.jpeg" alt="Post do Blog">
+            <div class="content">
+                <a href="#" class="title">café saboroso e refrescante</a>
+                <span>por admin / 21 de maio, 2024</span>
+                <a href="#" class="btn">leia mais</a>
+            </div>
+        </div>
+        <!-- ... outros posts ... -->
+    </div>
+</section>
+
+<!-- Rodapé -->
+<section class="footer">
+    <div class="share">
+        <!-- Ícones de redes sociais -->
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <!-- ... outras redes ... -->
+    </div>
+    <div class="links">
+        <!-- Links de navegação -->
+        <a href="#home">início</a>
+        <a href="#about">sobre</a>
+        <!-- ... outros links ... -->
+    </div>
+    <div class="credit">criado por <span>web designer</span> | todos os direitos reservados</div>
+</section>
+
+<!-- Link para o arquivo JavaScript -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
